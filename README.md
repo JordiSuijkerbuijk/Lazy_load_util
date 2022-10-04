@@ -6,7 +6,7 @@ The lazy load functionality should be added to the util folder in your project.
 
 To implement this util use the transition hook from remix in your root.tsx as a trigger for a useEffect that will call the lazyload util. This will ensure on navigation the new images will be fetched.
 
-```
+```javascript
   const transition = useTransition();
 
   useEffect(() => {
