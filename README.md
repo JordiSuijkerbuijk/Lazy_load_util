@@ -27,4 +27,4 @@ export default function Image({ src, srcSet, alt, loading = 'lazy', className = 
 }
 ```
 
-##If changes is needed for this component please let me know in the slack thread
+## If changes is needed for this component please let me know in the slack thread
