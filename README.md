@@ -15,3 +15,16 @@ To implement this util use the transition hook from remix in your root.tsx as a 
     }
   }, [transition]);
 ```
+
+## Image component
+There is not a lot needed for your specific Image component but keep in mind that some parts are mandatory, and the component should look something along the lines of this:
+
+```javascript
+export default function Image({ src, srcSet, alt, loading = 'lazy', className = '' }) {
+  return (
+    <img data-src={src} data-srcset={srcSet} alt={alt} className={clsx([className, loading])} />
+  );
+}
+```
+
+##If changes is needed for this component please let me know in the slack thread
