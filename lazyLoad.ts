@@ -6,9 +6,18 @@
  * Source:
  * https://web.dev/lazy-loading-images/#images-inline-intersection-observer
  */
-export default function LazyLoad() {
+type Argument = {
+  class: string;
+  margin: `${number}px` | `${number}%` | `${number}rem`;
+};
+
+export default function LazyLoad(argument: Argument = { class: 'lazy', margin: '0px' }) {
   //Fetch all the images containing the lazy class
-  const lazyImages = [].slice.call(document.querySelectorAll('img.lazy')) as NodeList[];
+  const lazyImages = [].slice.call(
+    document.querySelectorAll(`img.${argument.class}`)
+  ) as NodeList[];
+
+  let options = { rootMargin: argument.margin };
 
   if ('IntersectionObserver' in window) {
     const lazyImageObserver: IntersectionObserver = new IntersectionObserver(function (
@@ -34,7 +43,8 @@ export default function LazyLoad() {
           }
         }
       });
-    });
+    },
+    options);
 
     lazyImages.forEach(function (lazyImage: HTMLImageElement): void {
       lazyImageObserver.observe(lazyImage);
